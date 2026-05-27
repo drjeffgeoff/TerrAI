@@ -27,6 +27,14 @@ const useFarmStore = create((set, get) => ({
     set((state) => ({
       irrigationLogs: [log, ...state.irrigationLogs]
     }));
+  },
+  
+  updateCropHealth: (cropId, health) => {
+    set((state) => ({
+      crops: state.crops.map(crop =>
+        crop.id === cropId ? { ...crop, health, updatedAt: new Date().toISOString() } : crop
+      )
+    }));
   }
 }));
 
