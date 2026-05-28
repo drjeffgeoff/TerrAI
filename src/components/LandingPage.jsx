@@ -16,9 +16,9 @@ const LandingPage = ({ onNavigate }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-gradient-to-br from-primary-50 to-white/95 backdrop-blur-lg max-w-7xl mx-auto flex justify-between items-center p-6">
+      <nav className="sticky top-0 z-50 bg-gradient-to-br from-primary-50 to-primary-100/95 backdrop-blur-lg max-w-7xl mx-auto flex justify-between items-center p-6">
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 bg-primary-600 rounded-xl flex items-center justify-center">
             <Sprout className="w-6 h-6 text-white" />
@@ -60,7 +60,7 @@ const LandingPage = ({ onNavigate }) => {
             >
               Start Free Trial <ArrowRight className="w-5 h-5" />
             </button>
-            <button className="bg-white border-2 border-gray-200 px-8 py-3 rounded-xl font-medium hover:border-primary-600 transition-all">
+            <button className="bg-white border-2 border-primary-700 text-primary-900 px-8 py-3 rounded-xl font-medium hover:border-primary-600 hover:bg-primary-50 transition-all">
               Request Demo
             </button>
           </div>

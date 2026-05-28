@@ -16,10 +16,11 @@ const navigation = [
 
 export default function AdminLayout({ children, currentPath, setCurrentPath }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <div className="flex h-screen bg-gradient-to-br from-primary-100 to-primary-50">
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-primary-950 text-white flex flex-col transition-all duration-300`}>
+      <aside className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-primary-900 text-white flex flex-col transition-all duration-300`}>
         <div className="p-4">
           <div className="flex items-center justify-between mb-8">
             {sidebarOpen && (
@@ -41,7 +42,7 @@ export default function AdminLayout({ children, currentPath, setCurrentPath }) {
                   key={item.name}
                   onClick={() => setCurrentPath(item.path)}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                    isActive ? 'bg-primary-600 text-white' : 'text-gray-300 hover:bg-primary-800 hover:text-white'
+                    isActive ? 'bg-primary-600 text-white' : 'text-white hover:bg-primary-800 hover:text-white'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -53,13 +54,9 @@ export default function AdminLayout({ children, currentPath, setCurrentPath }) {
         </div>
 
         <div className="mt-auto p-4">
-          <button
-            onClick={() => setCurrentPath('/')}
-            className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-300 hover:text-white rounded-lg hover:bg-primary-800"
-          >
-            <LogOut className="w-4 h-4" />
-            {sidebarOpen && <span>Logout</span>}
-          </button>
+          <div className="text-xs text-gray-300 tracking-wider uppercase">
+            v1.0 · LSTM Engine
+          </div>
         </div>
       </aside>
 
@@ -72,16 +69,46 @@ export default function AdminLayout({ children, currentPath, setCurrentPath }) {
               ))}
             </select>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 relative">
             <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-full relative">
               <Bell className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
-            <div className="flex items-center gap-3 border-l pl-4 border-gray-200">
-              <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
-                <span className="text-primary-600 font-medium">JD</span>
-              </div>
-              <span className="text-sm font-medium">John Doe</span>
+            <div className="relative">
+              <button
+                onClick={() => setProfileOpen(!profileOpen)}
+                className="flex items-center gap-3 border-l pl-4 border-gray-200 text-sm font-medium text-gray-900 hover:text-primary-700"
+              >
+                <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-primary-600 font-medium">JD</span>
+                </div>
+                <span>John Doe</span>
+              </button>
+              {profileOpen && (
+                <div className="absolute right-0 mt-3 w-52 rounded-2xl bg-white border border-gray-200 shadow-lg text-left z-20">
+                  <button
+                    onClick={() => { setCurrentPath('/'); setProfileOpen(false); }}
+                    className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-primary-50"
+                  >
+                    Logout
+                  </button>
+                  <button
+                    className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-primary-50"
+                  >
+                    Modify Profile
+                  </button>
+                  <button
+                    className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-primary-50"
+                  >
+                    Edit User Detail
+                  </button>
+                  <button
+                    className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-primary-50 rounded-b-2xl"
+                  >
+                    Reset Password
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </header>
