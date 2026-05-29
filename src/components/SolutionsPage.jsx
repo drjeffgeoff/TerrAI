@@ -1,4 +1,4 @@
-import { Sprout, Droplets, Brain, ArrowRight, Leaf, BarChart3, Zap } from 'lucide-react';
+import { Sprout, Droplets, Brain, BarChart3, Zap } from 'lucide-react';
 
 const SolutionsPage = ({ onNavigate }) => {
   const solutions = [
