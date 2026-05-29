@@ -7,7 +7,7 @@ const LoginPage = ({ onLogin }) => {
       <div className="w-full max-w-md rounded-[2rem] border border-gray-200 bg-white p-10 shadow-2xl">
         <div className="text-center mb-10">
           <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-primary-600 text-3xl font-bold text-white">T</div>
-          <h1 className="text-3xl font-bold text-gray-900">Welcome Back!</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Welcome to Terramost AI</h1>
           <p className="mt-2 text-gray-600">Sign in to your account and access your farm dashboard.</p>
         </div>
 
@@ -41,7 +41,7 @@ const LoginPage = ({ onLogin }) => {
         </div>
 
         <div className="mt-10 rounded-3xl bg-gray-50 p-5 text-center text-sm text-gray-600">
-          <p><span className="font-semibold text-gray-900">Need an account?</span> Contact your farm administrator.</p>
+          <p><span className="font-semibold text-gray-900">Need an account?</span> Send Email: support@terramoist.org</p>
         </div>
       </div>
     </div>

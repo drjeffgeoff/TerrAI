@@ -17,6 +17,14 @@ const navigation = [
 export default function AdminLayout({ children, currentPath, setCurrentPath }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [user, setUser] = useState({ name: 'Jeff Geoff', avatarUrl: null });
+
+  function handleAvatarUpload(e) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setUser((u) => ({ ...u, avatarUrl: url }));
+  }
 
   return (
     <div className="flex h-screen bg-gradient-to-br from-primary-100 to-primary-50">
@@ -79,17 +87,29 @@ export default function AdminLayout({ children, currentPath, setCurrentPath }) {
                 onClick={() => setProfileOpen(!profileOpen)}
                 className="flex items-center gap-3 border-l pl-4 border-gray-200 text-sm font-medium text-gray-900 hover:text-primary-700"
               >
-                <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-primary-600 font-medium">JD</span>
-                </div>
-                <span>John Doe</span>
+                {user.avatarUrl ? (
+                  <img src={user.avatarUrl} alt={user.name} className="w-8 h-8 rounded-full object-cover" />
+                ) : (
+                  <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                    <span className="text-primary-600 font-medium">{(user.name || '').split(' ').map(n=>n[0]).join('').slice(0,2)}</span>
+                  </div>
+                )}
+                <span>{user.name}</span>
               </button>
               {profileOpen && (
-                <div className="absolute right-0 mt-3 w-52 rounded-2xl bg-white border border-gray-200 shadow-lg text-left z-20">
+                <div className="absolute right-0 mt-3 w-56 rounded-2xl bg-white border border-gray-200 shadow-lg text-left z-20">
+                  <input id="avatarInput" type="file" accept="image/*" onChange={handleAvatarUpload} className="hidden" />
                   <button
-                    onClick={() => { setCurrentPath('/'); setProfileOpen(false); }}
+                    onClick={() => { document.getElementById('avatarInput')?.click(); }}
                     className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-primary-50"
                   >
+                    Upload Photo
+                  </button>
+                  <button
+                    onClick={() => { setCurrentPath('/'); setProfileOpen(false); }}
+                    className="w-full flex items-center gap-2 text-left px-4 py-3 text-sm text-gray-700 hover:bg-primary-50"
+                  >
+                    <LogOut className="w-4 h-4" />
                     Logout
                   </button>
                   <button

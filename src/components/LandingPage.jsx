@@ -15,6 +15,15 @@ const LandingPage = ({ onNavigate }) => {
     { value: '24/7', label: 'Monitoring' }
   ];
 
+  const partners = [
+    { name: 'AgroTech Solutions', logo: 'https://via.placeholder.com/150x80/518f67/ffffff?text=AgroTech' },
+    { name: 'FarmHub', logo: 'https://via.placeholder.com/150x80/16a34a/ffffff?text=FarmHub' },
+    { name: 'GreenGrow', logo: 'https://via.placeholder.com/150x80/22c55e/ffffff?text=GreenGrow' },
+    { name: 'Smart Harvest', logo: 'https://via.placeholder.com/150x80/15803d/ffffff?text=SmartHarvest' },
+    { name: 'IrrigationPro', logo: 'https://via.placeholder.com/150x80/518f67/ffffff?text=IrrigationPro' },
+    { name: 'CropVision AI', logo: 'https://via.placeholder.com/150x80/16a34a/ffffff?text=CropVision' },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100">
       {/* Navigation */}
@@ -27,8 +36,8 @@ const LandingPage = ({ onNavigate }) => {
         </div>
         <div className="hidden md:flex gap-8 items-center text-gray-600">
           <a href="#features" className="hover:text-primary-600 transition-colors">Features</a>
-          <a href="#solutions" className="hover:text-primary-600 transition-colors">Solutions</a>
-          <a href="#pricing" className="hover:text-primary-600 transition-colors">Pricing</a>
+          <button onClick={() => onNavigate('/solutions')} className="hover:text-primary-600 transition-colors cursor-pointer">Solutions</button>
+          <button onClick={() => onNavigate('/pricing')} className="hover:text-primary-600 transition-colors cursor-pointer">Pricing</button>
           <a href="#contact" className="hover:text-primary-600 transition-colors">Contact</a>
           <button 
             onClick={() => onNavigate('/login')}
@@ -60,7 +69,10 @@ const LandingPage = ({ onNavigate }) => {
             >
               Start Free Trial <ArrowRight className="w-5 h-5" />
             </button>
-            <button className="bg-white border-2 border-primary-700 text-primary-900 px-8 py-3 rounded-xl font-medium hover:border-primary-600 hover:bg-primary-50 transition-all">
+            <button
+              className="border-2 border-primary-700 text-white px-8 py-3 rounded-xl font-medium hover:border-primary-600 hover:bg-primary-50 transition-all"
+              style={{ backgroundColor: '#518f67' }}
+            >
               Request Demo
             </button>
           </div>
@@ -127,10 +139,34 @@ const LandingPage = ({ onNavigate }) => {
           <p className="text-xl text-primary-100 mb-8">Join thousands of farmers using TerraMoist AI to optimize their operations.</p>
           <button 
             onClick={() => onNavigate('/login')}
-            className="bg-white text-primary-600 px-8 py-3 rounded-xl font-semibold shadow-lg hover:bg-gray-50 transition-all transform hover:scale-105"
+            className="text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:bg-primary-600 transition-all transform hover:scale-105"
+            style={{ backgroundColor: '#518f67' }}
           >
             Get Started
           </button>
+        </div>
+      </div>
+
+      {/* Partners Section */}
+      <div className="max-w-7xl mx-auto py-20 px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Trusted by Industry Leaders</h2>
+          <p className="text-xl text-gray-600">Partnering with the best in agriculture and technology</p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {partners.map((partner, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center h-24 border border-primary-200"
+            >
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="max-w-full max-h-full object-contain"
+                title={partner.name}
+              />
+            </div>
+          ))}
         </div>
       </div>
 

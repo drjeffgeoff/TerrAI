@@ -66,11 +66,11 @@ const DashboardView = () => {
         </div>
         <button 
           onClick={handleRefresh}
-          className="flex items-center gap-2 px-4 py-2 bg-white border border-primary-300 rounded-lg hover:bg-primary-50 transition-colors text-gray-900 font-medium"
+          aria-label="Refresh"
+          className="flex items-center justify-center rounded-full border border-primary-300 bg-white p-3 text-sm font-semibold text-[#13522C] shadow-sm shadow-primary-100 transition hover:bg-primary-50 disabled:cursor-not-allowed disabled:opacity-70"
           disabled={isLoading}
         >
-          <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-          Refresh
+          <RefreshCw className={`w-4 h-4 text-[#13522C] ${isLoading ? 'animate-spin' : ''}`} />
         </button>
       </div>
 
@@ -148,7 +148,9 @@ const DashboardView = () => {
         <div className="lg:col-span-2 bg-white rounded-xl border border-primary-300 p-6">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-bold text-gray-900">Recent Alerts</h3>
-            <button className="text-primary-600 text-sm font-medium hover:text-primary-700">View All</button>
+            <button className="rounded-full bg-[#13522C] px-3 py-1 text-sm font-semibold text-white transition hover:bg-[#11421c]">
+              View All
+            </button>
           </div>
           <div className="space-y-3">
             {alerts.map((alert) => (
@@ -167,7 +169,9 @@ const DashboardView = () => {
                     <p className="font-medium text-gray-900">{alert.message}</p>
                     <p className="text-sm text-gray-700 font-medium">{alert.time}</p>
                   </div>
-                  <button className="text-gray-400 hover:text-gray-600 text-sm font-medium">Acknowledge</button>
+                  <button className="rounded-full bg-[#13522C] px-3 py-1 text-sm font-semibold text-white transition hover:bg-[#11421c]">
+                    Acknowledge
+                  </button>
                 </div>
               </div>
             ))}

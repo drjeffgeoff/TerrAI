@@ -2,6 +2,8 @@ import { useState } from 'react';
 import AdminLayout from './components/AdminLayout';
 import LandingPage from './components/LandingPage';
 import LoginPage from './components/LoginPage';
+import SolutionsPage from './components/SolutionsPage';
+import PricingPage from './components/PricingPage';
 import FarmSelection from './components/FarmSelection';
 import DashboardView from './components/DashboardView';
 import FarmsView from './components/FarmsView';
@@ -20,6 +22,14 @@ function App() {
 
   if (currentPath === '/') {
     return <LandingPage onNavigate={setCurrentPath} />;
+  }
+
+  if (currentPath === '/solutions') {
+    return <SolutionsPage onNavigate={setCurrentPath} />;
+  }
+
+  if (currentPath === '/pricing') {
+    return <PricingPage onNavigate={setCurrentPath} />;
   }
 
   if (currentPath === '/login') {

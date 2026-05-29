@@ -6,7 +6,8 @@ const IrrigationControlView = () => {
   const [flowRate, setFlowRate] = useState(65);
   const [isActive, setIsActive] = useState(false);
 
-  const zones = ['Bed 1', 'Bed 2', 'Tower A', 'Tower B'];
+  const zones = ['Bed 1', 'Bed 2', 'Tower A', 'Tower B', 'Tower C', 'Tower D'];
+  const highlightedZones = new Set(['Bed 1','Bed 2', 'Tower A', 'Tower B', 'Tower C', 'Tower D']);
 
   return (
     <div className="space-y-6">
@@ -21,19 +22,24 @@ const IrrigationControlView = () => {
           <div>
             <label className="text-sm font-semibold text-gray-900 block mb-3">Select Zone</label>
             <div className="flex gap-2 flex-wrap">
-              {zones.map((zone) => (
-                <button
-                  key={zone}
-                  onClick={() => setSelectedZone(zone)}
-                  className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
-                    selectedZone === zone 
-                      ? 'bg-primary-600 text-white border-primary-600' 
-                      : 'bg-white border-primary-300 text-gray-900 hover:border-primary-400'
-                  }`}
-                >
-                  {zone}
-                </button>
-              ))}
+              {zones.map((zone) => {
+                const isHighlighted = highlightedZones.has(zone);
+                return (
+                  <button
+                    key={zone}
+                    onClick={() => setSelectedZone(zone)}
+                    className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all ${
+                      selectedZone === zone
+                        ? 'bg-primary-600 text-white border-primary-600'
+                        : isHighlighted
+                        ? 'bg-[#518f67] text-white border-primary-600'
+                        : 'bg-white border-primary-300 text-gray-900 hover:border-primary-400'
+                    }`}
+                  >
+                    {zone}
+                  </button>
+                );
+              })}
             </div>
           </div>
           

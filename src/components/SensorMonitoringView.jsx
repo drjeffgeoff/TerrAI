@@ -34,8 +34,8 @@ const SensorMonitoringView = () => {
               <p className="text-sm text-gray-700 font-medium">Live readings for the most important devices.</p>
             </div>
             <div className="flex gap-2">
-              <button className="rounded-full bg-emerald-50 text-emerald-700 px-4 py-2 text-sm font-medium border border-emerald-200">Soil Moisture</button>
-              <button className="rounded-full bg-sky-50 text-sky-700 px-4 py-2 text-sm font-medium border border-sky-200">Temperature</button>
+              <button className="rounded-full bg-emerald-900 text-white px-4 py-2 text-sm font-semibold border border-emerald-800 shadow-sm hover:bg-emerald-800">Soil Moisture</button>
+              <button className="rounded-full bg-sky-900 text-white px-4 py-2 text-sm font-semibold border border-sky-800 shadow-sm hover:bg-sky-800">Temperature</button>
             </div>
           </div>
 
@@ -60,17 +60,17 @@ const SensorMonitoringView = () => {
                 key={sensor.id}
                 onClick={() => setSelectedSensor(sensor.id)}
                 className={`w-full text-left rounded-3xl border p-4 transition ${
-                  selectedSensor === sensor.id ? 'border-primary-600 bg-primary-50' : 'border-primary-300 bg-white hover:bg-primary-25'
+                  selectedSensor === sensor.id ? 'border-primary-800 bg-primary-900 text-white' : 'border-primary-300 bg-white text-gray-900 hover:bg-primary-25'
                 }`}
               >
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="font-semibold text-gray-900">{sensor.type}</p>
-                    <p className="text-sm text-gray-700 font-medium">{sensor.location}</p>
+                    <p className={`font-semibold ${selectedSensor === sensor.id ? 'text-white' : 'text-gray-900'}`}>{sensor.type}</p>
+                    <p className={`text-sm font-medium ${selectedSensor === sensor.id ? 'text-white/80' : 'text-gray-700'}`}>{sensor.location}</p>
                   </div>
-                  <span className="text-sm font-semibold text-gray-900">{sensor.value}{sensor.unit}</span>
+                  <span className={`text-sm font-semibold ${selectedSensor === sensor.id ? 'text-white' : 'text-gray-900'}`}>{sensor.value}{sensor.unit}</span>
                 </div>
-                <p className="mt-2 text-xs text-gray-700 font-medium">Updated {new Date(sensor.lastUpdated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                <p className={`mt-2 text-xs font-medium ${selectedSensor === sensor.id ? 'text-white/70' : 'text-gray-700'}`}>Updated {new Date(sensor.lastUpdated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
               </button>
             ))}
           </div>
